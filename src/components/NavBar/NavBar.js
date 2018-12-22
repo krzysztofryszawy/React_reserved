@@ -9,7 +9,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: '#303030',
+    backgroundColor: '#202020',
     zIndex: '99999',
     // overflow: 'hidden',
     position: 'fixed',
@@ -22,16 +22,18 @@ const styles = theme => ({
     [theme.breakpoints.down(520)]: {
       justifyContent: 'space-evenly',
     },
+    fontWeight: 800,
+    userSelect: 'none'
   },
   link: {
+    textDecoration: 'none',
     padding: '1rem',
     marginRight: '1rem',
     color: 'darkorange',
-    transform: 'translateY(5px)',
     '&:hover': {
       backgroundColor: 'darkorange',
       color: '#202020',
-      transform: 'translateY(10px)',
+      transform: 'translateY(5px)',
     },
     textAlign: 'center',
     transition: 'transform .2s ease-out',
@@ -39,7 +41,7 @@ const styles = theme => ({
       padding: '.5rem',
       marginRight: 0,
       marginLeft: '.1rem',
-      marginBottom: '.5rem',
+      fontWeight: 500,
       '&:hover': {
         // transform: 'translateX(10px) translateY(5px)',
       },        
@@ -47,8 +49,20 @@ const styles = theme => ({
   },
   activeLink: {
     backgroundColor: 'darkorange',
-    color: '#202020'
+    color: '#202020',
+    transform: 'translateY(5px)',
   },
+  logo: {
+    margin: '.5rem',
+    padding: '.5rem',
+    backgroundColor: '#3E2723',
+    color: '#202020',
+    textAlign: 'center',
+    [theme.breakpoints.down(520)]: {
+      padding: '.2rem',
+      fontSize: '.5rem'
+    },
+  }
 });
 
 
@@ -96,13 +110,20 @@ class NavBar extends React.Component {
 
     return (
       
-
-      <div className={classes.root}>
-          <NavLink exact to="/" className={classes.link} activeClassName={classes.activeLink}>Main</NavLink>
-          <NavLink to="/People" className={classes.link} activeClassName={classes.activeLink}>People</NavLink>
-          <NavLink to="/Things" className={classes.link} activeClassName={classes.activeLink}>Things</NavLink>
-          <NavLink to="/Booking" className={classes.link} activeClassName={classes.activeLink}>Booking</NavLink>
-          <NavLink to="/Help" className={classes.link} activeClassName={classes.activeLink}>Help</NavLink>
+      <div>
+        <div className={classes.root}>
+            <NavLink exact to="/" className={classes.link} activeClassName={classes.activeLink}>Main</NavLink>
+            <NavLink to="/People" className={classes.link} activeClassName={classes.activeLink}>People</NavLink>
+            <NavLink to="/Things" className={classes.link} activeClassName={classes.activeLink}>Things</NavLink>
+            <NavLink to="/Booking" className={classes.link} activeClassName={classes.activeLink}>Booking</NavLink>
+            <NavLink to="/Help" className={classes.link} activeClassName={classes.activeLink}>
+            Help</NavLink>
+            <div className={classes.logo}>{this.props.companyName}
+            {this.props.companyName == 'Emerald Forest' && ' 💎'}
+              {this.props.companyName == 'Aviation' && ' ✈'}
+              {this.props.companyName == 'Greyhound' && ' 🐕'}
+              </div>
+        </div>
       </div>
     );
   }

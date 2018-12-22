@@ -5,6 +5,10 @@ import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
 import CloudCircle from '@material-ui/icons/CloudCircle';
 
+import { CurrentCompanyConsumer } from '../../context/CurrentCompanyName.context'
+
+
+import Form from './Form/Form'
 
 const styles = theme => ({
   root: {
@@ -28,44 +32,42 @@ const Main = (props) => {
   const { classes } = props;
 
   return (
-    <React.Fragment>
-      <div className={classes.root}>
-        <Grid container direction="row" justify="center" alignItems="stretch" spacing={24}>
-          <Typography style={{margin: '5rem'}} color='secondary' variant="h1" component="h3">
-            🍰
-          </Typography>
-        </Grid>
-        <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
-          <Grid className={classes.item} item xs={10} >
-              <Typography color='secondary' variant="h5" component="h3">
-                Main Page
+    <CurrentCompanyConsumer>
+      {({companyName, changeName}) => (
+        <React.Fragment>
+          <div className={classes.root}>
+            <Grid container direction="row" justify="center" alignItems="stretch" spacing={24}>
+              <Typography  color='primary'  style={{margin: '3rem'}} variant="h4" component="h4">
+              {companyName}
               </Typography>
-              <Typography color='inherit' component="p">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa minima veritatis libero non tempora reprehenderit quasi laudantium quisquam aperiam. Reprehenderit obcaecati nobis eveniet quo odio enim culpa magni eos fugiat?
-              </Typography>
-          </Grid>
-          <Grid className={classes.item} item sm={5} xs={12}>
-            <Laptop style={{ color: 'brown' }}/>
-            <Typography  color='secondary' variant="h5" component="h3">
-              Left column
-            </Typography>
-            <Typography  color='inherit' component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, at! Ab aliquid id, quibusdam nemo blanditiis odit autem vel repellendus minima fuga porro possimus, sint, et suscipit ducimus quas. Labore.
-            </Typography>
-          </Grid>
-          <Grid className={classes.item} item sm={5} xs={12}>
-            <CloudCircle style={{ color: 'brown' }}/>
-            <Typography  color='secondary' variant="h5" component="h3">
-                Right column
-            </Typography>
-            <Typography  color='inherit' component="p">              
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam facilis rem ducimus doloribus facere soluta repellendus, culpa atque unde voluptatum quasi incidunt? Laudantium amet inventore aliquid reprehenderit iusto facere, atque tempore.
-            </Typography>
-          </Grid>
-        </Grid>
-      </div>
+            </Grid>
+            <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
+              <Grid className={classes.item} item xs={10} >
+                  <Typography variant="h5" component="h3">
+                    Main Page
+                  </Typography>
+              </Grid>
+              <Grid className={classes.item} item sm={5} xs={12}>
+                <Laptop style={{ color: 'brown' }}/>
+
+                <Form
+                  changeName={changeName}/>
+              </Grid>
+              <Grid className={classes.item} item sm={5} xs={12}>
+                <CloudCircle style={{ color: 'brown' }}/>
+                <Typography  variant="h5" component="h3">
+                    Right column
+                </Typography>
+                <Typography component="p">              
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam facilis rem ducimus doloribus facere soluta repellendus, culpa atque unde voluptatum quasi incidunt? Laudantium amet inventore aliquid reprehenderit iusto facere, atque tempore.
+                </Typography>
+              </Grid>
+            </Grid>
+          </div>
+        </React.Fragment>
+      )}
+    </CurrentCompanyConsumer>    
       
-    </React.Fragment>
   );
 }
 

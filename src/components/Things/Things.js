@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
 import CloudCircle from '@material-ui/icons/CloudCircle';
 
+import Thing from './Thing/Thing'
 
 const styles = theme => ({
   root: {
@@ -14,18 +15,33 @@ const styles = theme => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
     width: 'auto',
     [theme.breakpoints.up('md')]: {
-      width: '80vw',
+      width: '95vw',
       marginLeft: 'auto',
       marginRight: 'auto',
     },
   },
   item: {
-    margin: theme.spacing.unit * 2,
+    // margin: theme.spacing.unit * 2,
+  },
+  thingsContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
   }
 });
 
 const Things = (props) => {
   const { classes } = props;
+
+  const thingsToDisplay = props.thingsDatabase.map((singleThing, mapIndex) => 
+  (singleThing.company == props.companyName) && 
+              <Thing
+                key={singleThing.name+mapIndex}
+                name={singleThing.name}
+                company={singleThing.company}
+                icon={singleThing.icon}
+                img={singleThing.img}
+                />
+  )
 
   return (
     <React.Fragment>
@@ -39,14 +55,14 @@ const Things = (props) => {
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa minima veritatis libero non tempora reprehenderit quasi laudantium quisquam aperiam. Reprehenderit obcaecati nobis eveniet quo odio enim culpa magni eos fugiat?
               </Typography>
           </Grid>
-          <Grid className={classes.item} item sm={5} xs={12}>
+          <Grid className={classes.item} item sm={7} xs={12}>
             <Laptop style={{ color: 'brown' }}/>
             <Typography  color='secondary' variant="h5" component="h3">
               Left column
             </Typography>
-            <Typography  color='inherit' component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, at! Ab aliquid id, quibusdam nemo blanditiis odit autem vel repellendus minima fuga porro possimus, sint, et suscipit ducimus quas. Labore.
-            </Typography>
+            <div className={classes.thingsContainer}>
+              {thingsToDisplay}
+            </div>
           </Grid>
           <Grid className={classes.item} item sm={5} xs={12}>
             <CloudCircle style={{ color: 'brown' }}/>
