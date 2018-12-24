@@ -5,7 +5,11 @@ import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
 import CloudCircle from '@material-ui/icons/CloudCircle';
 
+import { CurrentCompanyConsumer } from '../../context/CurrentCompanyName.context'
+
+
 import Thing from './Thing/Thing'
+import Filters from './Filters/Filters'
 
 const styles = theme => ({
   root: {
@@ -26,14 +30,15 @@ const styles = theme => ({
   thingsContainer: {
     display: 'flex',
     flexWrap: 'wrap',
+    // height: '100px',
   }
 });
 
 const Things = (props) => {
   const { classes } = props;
 
-  const thingsToDisplay = props.thingsDatabase.map((singleThing, mapIndex) => 
-  (singleThing.company == props.companyName) && 
+  const thingsToDisplay = props.thingsDatabase.map((singleThing, mapIndex) =>
+  (singleThing.company == props.companyName && (props.thingType.indexOf(singleThing.type) !== -1)) && 
               <Thing
                 key={singleThing.name+mapIndex}
                 name={singleThing.name}
@@ -43,42 +48,40 @@ const Things = (props) => {
                 />
   )
 
+
   return (
-    <React.Fragment>
-      <div className={classes.root}>
-        <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
-          <Grid className={classes.item} item xs={10} >
-              <Typography color='secondary' variant="h5" component="h3">
-                Things Page
-              </Typography>
-              <Typography color='inherit' component="p">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa minima veritatis libero non tempora reprehenderit quasi laudantium quisquam aperiam. Reprehenderit obcaecati nobis eveniet quo odio enim culpa magni eos fugiat?
-              </Typography>
-          </Grid>
-          <Grid className={classes.item} item sm={7} xs={12}>
-            <Laptop style={{ color: 'brown' }}/>
-            <Typography  color='secondary' variant="h5" component="h3">
-              Left column
-            </Typography>
-            <div className={classes.thingsContainer}>
-              {thingsToDisplay}
-            </div>
-          </Grid>
-          <Grid className={classes.item} item sm={5} xs={12}>
-            <CloudCircle style={{ color: 'brown' }}/>
-            <Typography  color='secondary' variant="h5" component="h3">
-                Right column
-            </Typography>
-            <Typography  color='inherit' component="p">              
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam facilis rem ducimus doloribus facere soluta repellendus, culpa atque unde voluptatum quasi incidunt? Laudantium amet inventore aliquid reprehenderit iusto facere, atque tempore.
-            </Typography>
-          </Grid>
-        </Grid>
-      </div>
-      
-    </React.Fragment>
-  );
-}
+        <React.Fragment>
+          <div className={classes.root}>
+            <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
+              <Grid className={classes.item} item xs={10} >
+                  <Typography variant="h5" component="h3">
+                    TYPE PROVIDED BY CONTEXT API :  {props.thingType}
+                  </Typography>
+                  <Filters
+                    changeThingTypeHandler={props.changeThingTypeHandler}/>
+              </Grid>
+              <Grid className={classes.item} item sm={7} xs={12}>
+                <Laptop style={{ color: 'brown' }}/>
+                <div className={classes.thingsContainer}>
+                  {thingsToDisplay.every((el) => el == false) ? <Typography color='primary' variant="h5" component="h3">
+                  Nothing on the list 😕 tweak your filter settings ☑
+                </Typography> : thingsToDisplay}
+                </div>
+              </Grid>
+              <Grid className={classes.item} item sm={5} xs={12}>
+                <CloudCircle style={{ color: 'brown' }}/>
+                <Typography variant="h5" component="h3">
+                    Right column
+                </Typography>
+                <Typography component="p">              
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam facilis rem ducimus doloribus facere soluta repellendus, culpa atque unde voluptatum quasi incidunt? Laudantium amet inventore aliquid reprehenderit iusto facere, atque tempore.
+                </Typography>
+              </Grid>
+            </Grid>
+          </div>
+        </React.Fragment>    
+    );
+  }
 
 
 export default withStyles(styles)(Things);

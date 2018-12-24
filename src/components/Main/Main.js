@@ -37,37 +37,38 @@ const Main = (props) => {
         <React.Fragment>
           <div className={classes.root}>
             <Grid container direction="row" justify="center" alignItems="stretch" spacing={24}>
-              <Typography  color='primary'  style={{margin: '3rem'}} variant="h4" component="h4">
+              <Typography  color='secondary'  style={{margin: '3rem'}} variant="h4" component="h4">
               {companyName}
               </Typography>
             </Grid>
             <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
-              <Grid className={classes.item} item xs={10} >
+              {/* <Grid className={classes.item} item xs={10} >
+                <Laptop style={{ color: 'brown' }}/>
                   <Typography variant="h5" component="h3">
                     Main Page
                   </Typography>
-              </Grid>
+              </Grid> */}
               <Grid className={classes.item} item sm={5} xs={12}>
-                <Laptop style={{ color: 'brown' }}/>
+                <img style={{maxWidth: '20vh'}} src={require(`../../assets/images/welcome2.png`)} alt=""/>
 
-                <Form
-                  changeName={changeName}/>
               </Grid>
               <Grid className={classes.item} item sm={5} xs={12}>
-                <CloudCircle style={{ color: 'brown' }}/>
+                <Form
+                  changeName={changeName}
+                  companyName={companyName}/>
+                {/* <CloudCircle style={{ color: 'brown' }}/>
                 <Typography  variant="h5" component="h3">
                     Right column
                 </Typography>
                 <Typography component="p">              
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam facilis rem ducimus doloribus facere soluta repellendus, culpa atque unde voluptatum quasi incidunt? Laudantium amet inventore aliquid reprehenderit iusto facere, atque tempore.
-                </Typography>
+                </Typography> */}
               </Grid>
             </Grid>
           </div>
         </React.Fragment>
       )}
-    </CurrentCompanyConsumer>    
-      
+    </CurrentCompanyConsumer>      
   );
 }
 

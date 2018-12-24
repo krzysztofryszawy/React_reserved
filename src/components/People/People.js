@@ -53,7 +53,7 @@ const People = (props) => {
           <div className={classes.root}>
             <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
               <Grid className={classes.item} item xs={10} >
-                  <Typography color='primary' variant="h5" component="h3">
+                  <Typography variant="h5" component="h3">
                     People Page
                   </Typography>
                   <Typography component="p"> provided by Context API </Typography>
@@ -61,7 +61,7 @@ const People = (props) => {
               </Grid>
               <Grid className={classes.item} item sm={7} xs={12}>
                 <Laptop style={{ color: 'brown' }}/>
-                <Typography  color='secondary' variant="h5" component="h3">
+                <Typography variant="h5" component="h3">
                   Left column
                 </Typography>
                 <div className={classes.peopleContainer}>
@@ -70,7 +70,7 @@ const People = (props) => {
               </Grid>
               <Grid className={classes.item} item sm={5} xs={12}>
                 <CloudCircle style={{ color: 'brown' }}/>
-                <Typography  color='secondary' variant="h5" component="h3">
+                <Typography variant="h5" component="h3">
                     Right column
                 </Typography>
                 <Typography  component="p">              

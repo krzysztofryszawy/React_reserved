@@ -1,0 +1,80 @@
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
+
+
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+  },
+  formControl: {
+    margin: theme.spacing.unit * 3,
+},
+});
+
+class Filters extends React.Component {
+
+    componentDidMount() {
+        this.props.changeThingTypeHandler([this.state.car && 'car', this.state.place && 'place', this.state.equipment && 'equipment'])
+    }
+
+  state = {
+    car: true,
+    place: true,
+    equipment: true,
+  };
+
+
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.checked }, () =>     this.props.changeThingTypeHandler([this.state.car && 'car', this.state.place && 'place', this.state.equipment && 'equipment']));
+    // ONLY FOR TEST HARDCODED TEMPORARY ARRAY
+  };
+
+//   changeThingTypeHandler - method to save in context api provider
+
+
+
+  render() {
+    const { classes } = this.props;
+    const { car, place, equipment } = this.state;
+    const error = [car, place, equipment].filter(v => v).length !== 2;
+
+    return (
+      <div className={classes.root}>
+        <FormControl component="fieldset" className={classes.formControl}>
+          <FormLabel component="legend">Filter</FormLabel>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox checked={car} onChange={this.handleChange('car')} value="car" />
+              }
+              label="Cars"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox checked={place} onChange={this.handleChange('place')} value="place" />
+              }
+              label="Places"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={equipment} onChange={this.handleChange('equipment')} value="equipment"/>
+              }
+              label="Equipment"
+            />
+          </FormGroup>
+          <FormHelperText>Multiple choice</FormHelperText>
+        </FormControl>
+      </div>
+    );
+  }
+}
+
+export default withStyles(styles)(Filters);

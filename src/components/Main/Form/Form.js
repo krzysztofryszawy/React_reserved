@@ -38,8 +38,7 @@ const styles = theme => ({
     };
   
     componentDidMount() {
-      this.setState({
-      });
+      this.setState({companyName: this.props.companyName});
     }
   
     handleChange = event => {
@@ -60,7 +59,7 @@ const styles = theme => ({
                 value={this.state.companyName}
                 onChange={this.handleChange}
                 input={<Input name="companyName" id="company-name-label-placeholder" />}
-                name="companyName"
+                // name="companyName"
                 className={classes.selectEmpty}
                 >
                   <MenuItem value={'Emerald Forest'}>Emerald Forest</MenuItem>

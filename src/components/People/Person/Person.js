@@ -26,6 +26,7 @@ const Person = (props) => {
             <Card className={props.classes.card}>
                 <CardActionArea>
                     <CardMedia
+                    image={require(`../../../assets/images/${props.img.toLowerCase()}.jpg`)}
                     className={props.classes.media}
                     title="item to burn"
                     />
@@ -33,11 +34,11 @@ const Person = (props) => {
                         <Typography component="p">
                             {props.icon}
                         </Typography>
-                        <Typography color='primary' gutterBottom variant="h5" component="h2">
+                        <Typography color='primary' gutterBottom variant="button">
                             {props.name}
                         </Typography>
                         <Typography component="p">
-                            {props.company}
+                            Company: {props.company}
                         </Typography>
                         <Typography component="p">
                             {/* {props.priority}priorytet? */}
@@ -45,7 +46,7 @@ const Person = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button onClick={ () => props.click(props.name)} size="small" color="primary" variant="contained">
+                    <Button onClick={ () => props.click(props.name)} size="small" color="secondary" variant="contained">
                         more info...
                     </Button>
                 </CardActions>

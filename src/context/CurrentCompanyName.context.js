@@ -6,11 +6,15 @@ const CurrentCompanyContext = React.createContext()
 
 class CurrentCompanyProvider extends Component {
     state = {
-        companyName: 'not selected yet'
+        companyName: 'Select your Company',
+        thingType: []
     }
 
     changeNameHandler = (providedName) => {
         this.setState({companyName: providedName})
+    }
+    changeThingTypeHandler = (providedType) => {
+        this.setState({thingType: providedType})
     }
 
 
@@ -20,7 +24,9 @@ class CurrentCompanyProvider extends Component {
             <CurrentCompanyContext.Provider
                 value={{
                     companyName: this.state.companyName,
-                    changeName: this.changeNameHandler
+                    changeName: this.changeNameHandler,
+                    thingType: this.state.thingType,
+                    changeThingTypeHandler: this.changeThingTypeHandler,
                 }}>
                 {children}
             </CurrentCompanyContext.Provider>

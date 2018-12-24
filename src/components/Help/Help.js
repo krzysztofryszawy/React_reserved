@@ -14,13 +14,13 @@ const styles = theme => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
     width: 'auto',
     [theme.breakpoints.up('md')]: {
-      width: '80vw',
+      width: '95vw',
       marginLeft: 'auto',
       marginRight: 'auto',
     },
   },
   item: {
-    margin: theme.spacing.unit * 2,
+    // margin: theme.spacing.unit * 2,
   }
 });
 
@@ -35,25 +35,25 @@ const Help = (props) => {
               <Typography color='secondary' variant="h5" component="h3">
                 Help Page
               </Typography>
-              <Typography color='inherit' component="p">
+              <Typography component="p">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa minima veritatis libero non tempora reprehenderit quasi laudantium quisquam aperiam. Reprehenderit obcaecati nobis eveniet quo odio enim culpa magni eos fugiat?
               </Typography>
           </Grid>
           <Grid className={classes.item} item sm={5} xs={12}>
             <Laptop style={{ color: 'brown' }}/>
-            <Typography  color='secondary' variant="h5" component="h3">
+            <Typography variant="h5" component="h3">
               Left column
             </Typography>
-            <Typography  color='inherit' component="p">
+            <Typography component="p">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, at! Ab aliquid id, quibusdam nemo blanditiis odit autem vel repellendus minima fuga porro possimus, sint, et suscipit ducimus quas. Labore.
             </Typography>
           </Grid>
           <Grid className={classes.item} item sm={5} xs={12}>
             <CloudCircle style={{ color: 'brown' }}/>
-            <Typography  color='secondary' variant="h5" component="h3">
+            <Typography variant="h5" component="h3">
                 Right column
             </Typography>
-            <Typography  color='inherit' component="p">              
+            <Typography component="p">              
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam facilis rem ducimus doloribus facere soluta repellendus, culpa atque unde voluptatum quasi incidunt? Laudantium amet inventore aliquid reprehenderit iusto facere, atque tempore.
             </Typography>
           </Grid>

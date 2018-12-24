@@ -62,6 +62,9 @@ const styles = theme => ({
       padding: '.2rem',
       fontSize: '.5rem'
     },
+  },
+  disabled: {
+    opacity: .5
   }
 });
 
@@ -69,37 +72,9 @@ const styles = theme => ({
 
 class NavBar extends React.Component {
 
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handlescroll);
-  }
-
-  handleScroll = () => {
-    this.setState({fixed: false})
-    let offset = ReactDOM.findDOMNode(this).getBoundingClientRect()
-    // let winScrollY = window.scrollY
-    // var intViewportHeight = window.innerHeight;
-
-
-    // console.log(this.state.fixed)
-    // console.log('offset.y | ' + offset.y)
-    // console.log('winScrollY | ' + winScrollY)
-    // console.log('intViewportHeight | ' + intViewportHeight)
-    // console.log(intViewportHeight-winScrollY)
-
-    
-    if (offset.y <= 0) {
-      this.setState({fixed: true})
-    }
-  }
   
   state = {
     value: '0',
-    fixed: false,
   };
 
 
@@ -112,12 +87,45 @@ class NavBar extends React.Component {
       
       <div>
         <div className={classes.root}>
-            <NavLink exact to="/" className={classes.link} activeClassName={classes.activeLink}>Main</NavLink>
-            <NavLink to="/People" className={classes.link} activeClassName={classes.activeLink}>People</NavLink>
-            <NavLink to="/Things" className={classes.link} activeClassName={classes.activeLink}>Things</NavLink>
-            <NavLink to="/Booking" className={classes.link} activeClassName={classes.activeLink}>Booking</NavLink>
-            <NavLink to="/Help" className={classes.link} activeClassName={classes.activeLink}>
-            Help</NavLink>
+            <NavLink             
+              exact 
+              to="/" 
+              className={classes.link} 
+              activeClassName={classes.activeLink}
+            >
+              Main
+            </NavLink>
+            <NavLink 
+              style={this.props.companyName == 'Select your Company' ? {display: 'none', } : null}
+              to="/People" 
+              className={classes.link} 
+              activeClassName={classes.activeLink}
+            >
+              People
+            </NavLink>
+            <NavLink 
+              style={this.props.companyName == 'Select your Company' ? {display: 'none', } : null}
+              to="/Things" 
+              className={classes.link} 
+              activeClassName={classes.activeLink}
+            >
+              Things
+            </NavLink>
+            <NavLink 
+              style={this.props.companyName == 'Select your Company' ? {display: 'none', } : null}
+              to="/Booking" 
+              className={classes.link} 
+              activeClassName={classes.activeLink}
+            >
+              Booking
+            </NavLink>
+            <NavLink 
+              to="/Help" 
+              className={classes.link} 
+              activeClassName={classes.activeLink}
+            >
+              Help
+            </NavLink>
             <div className={classes.logo}>{this.props.companyName}
             {this.props.companyName == 'Emerald Forest' && ' 💎'}
               {this.props.companyName == 'Aviation' && ' ✈'}

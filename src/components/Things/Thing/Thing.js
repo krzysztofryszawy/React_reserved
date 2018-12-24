@@ -19,6 +19,10 @@ const styles = {
     },
 };
 
+const handleClick = (e) => {
+    console.log(e.target)
+}
+
 const Thing = (props) => {
 
     return (
@@ -26,6 +30,7 @@ const Thing = (props) => {
             <Card className={props.classes.card}>
                 <CardActionArea>
                     <CardMedia
+                    image={require(`../../../assets/images/${props.img.toLowerCase()}.jpg`)}
                     className={props.classes.media}
                     title="item to burn"
                     />
@@ -33,16 +38,16 @@ const Thing = (props) => {
                         <Typography component="p">
                             {props.icon}
                         </Typography>
-                        <Typography color='primary' gutterBottom variant="h5" component="h2">
+                        <Typography color='primary' gutterBottom variant="button">
                             {props.name}
                         </Typography>
                         <Typography component="p">
-                            {props.company}
+                            Owner: {props.company}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button onClick={ () => props.click(props.name)} size="small" color="primary" variant="contained">
+                    <Button onClick={ handleClick} size="small" color="primary" variant="contained">
                         more info...
                     </Button>
                 </CardActions>
