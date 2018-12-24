@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
 import CloudCircle from '@material-ui/icons/CloudCircle';
 
-import { CurrentCompanyConsumer } from '../../context/CurrentCompanyName.context'
+import { CurrentSettingsConsumer } from '../../context/CurrentSettings.context'
 
 
 import Form from './Form/Form'
@@ -15,7 +15,7 @@ const styles = theme => ({
     flexGrow: 1,
     marginTop: '5rem',
     padding: theme.spacing.unit * 3,
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    // borderBottom: `1px solid ${theme.palette.divider}`,
     width: 'auto',
     [theme.breakpoints.up('md')]: {
       width: '80vw',
@@ -25,6 +25,12 @@ const styles = theme => ({
   },
   item: {
     margin: theme.spacing.unit * 2,
+  },
+  imgClass: {
+    maxWidth: '20vh',
+    [theme.breakpoints.up('md')]: {
+      maxWidth: '40vh',
+    },
   }
 });
 
@@ -32,12 +38,12 @@ const Main = (props) => {
   const { classes } = props;
 
   return (
-    <CurrentCompanyConsumer>
+    <CurrentSettingsConsumer>
       {({companyName, changeName}) => (
         <React.Fragment>
           <div className={classes.root}>
             <Grid container direction="row" justify="center" alignItems="stretch" spacing={24}>
-              <Typography  color='secondary'  style={{margin: '3rem'}} variant="h4" component="h4">
+              <Typography  color='primary' variant="h5" component="h5">
               {companyName}
               </Typography>
             </Grid>
@@ -49,7 +55,7 @@ const Main = (props) => {
                   </Typography>
               </Grid> */}
               <Grid className={classes.item} item sm={5} xs={12}>
-                <img style={{maxWidth: '20vh'}} src={require(`../../assets/images/welcome2.png`)} alt=""/>
+                <img className={classes.imgClass} src={require(`../../assets/images/welcome2.png`)} alt=""/>
 
               </Grid>
               <Grid className={classes.item} item sm={5} xs={12}>
@@ -68,7 +74,7 @@ const Main = (props) => {
           </div>
         </React.Fragment>
       )}
-    </CurrentCompanyConsumer>      
+    </CurrentSettingsConsumer>      
   );
 }
 

@@ -127,7 +127,7 @@ class NavBar extends React.Component {
               Help
             </NavLink>
             <div className={classes.logo}>{this.props.companyName}
-            {this.props.companyName == 'Emerald Forest' && ' 💎'}
+            {this.props.companyName == 'Emerald Forest' && ' 🌳'}
               {this.props.companyName == 'Aviation' && ' ✈'}
               {this.props.companyName == 'Greyhound' && ' 🐕'}
               </div>

@@ -5,6 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
 import CloudCircle from '@material-ui/icons/CloudCircle';
 
+import Person from '../People/Person/Person'
+import Thing from '../Things/Thing/Thing'
+
 
 const styles = theme => ({
   root: {
@@ -21,23 +24,55 @@ const styles = theme => ({
   },
   item: {
     // margin: theme.spacing.unit * 2,
+  },
+  currentSelectContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
   }
 });
 
 const Booking = (props) => {
   const { classes } = props;
 
+  const currentPersonToDisplay = props.peopleDatabase.map((singlePerson, mapIndex) => 
+  ((singlePerson.name == props.currentPerson) && (props.companyName == singlePerson.company)) && 
+              <Person
+                key={singlePerson.name+mapIndex}
+                name={singlePerson.name}
+                company={singlePerson.company}
+                priority={singlePerson.priority}
+                icon={singlePerson.icon}
+                img={singlePerson.img}
+                currentPerson={props.currentPerson}
+                changeCurrentPersonHandler={props.changeCurrentPersonHandler}
+                />
+  )
+
+  const currentThingToDisplay = props.thingsDatabase.map((singleThing, mapIndex) =>
+  ((singleThing.name == props.currentThing) && (props.companyName == singleThing.company)) &&
+              <Thing
+                key={singleThing.name+mapIndex}
+                name={singleThing.name}
+                company={singleThing.company}
+                icon={singleThing.icon}
+                img={singleThing.img}
+                changeCurrentThingHandler={props.changeCurrentThingHandler}
+                currentThing={props.currentThing}
+                />
+  )
+
   return (
     <React.Fragment>
       <div className={classes.root}>
         <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
-          <Grid className={classes.item} item xs={10} >
-              <Typography variant="h5" component="h3">
-                Booking Page
+          <Grid className={classes.item} item xs={12} >
+              <Typography gutterBottom color='primary' variant="h5" component="h3">
+                {props.currentPerson} is going to book {props.currentThing}
               </Typography>
-              <Typography component="p">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa minima veritatis libero non tempora reprehenderit quasi laudantium quisquam aperiam. Reprehenderit obcaecati nobis eveniet quo odio enim culpa magni eos fugiat?
-              </Typography>
+              <div className={classes.currentSelectContainer}>
+                {currentPersonToDisplay}              
+                {currentThingToDisplay}
+              </div>
           </Grid>
           <Grid className={classes.item} item sm={5} xs={12}>
             <Laptop style={{ color: 'brown' }}/>

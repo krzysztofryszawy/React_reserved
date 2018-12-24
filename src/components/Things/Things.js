@@ -3,9 +3,10 @@ import { withStyles, withTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
-import CloudCircle from '@material-ui/icons/CloudCircle';
+import DirectionsCar from '@material-ui/icons/DirectionsCar';
+import Business from '@material-ui/icons/Business';
 
-import { CurrentCompanyConsumer } from '../../context/CurrentCompanyName.context'
+import { CurrentCompanyConsumer } from '../../context/CurrentSettings.context'
 
 
 import Thing from './Thing/Thing'
@@ -37,6 +38,7 @@ const styles = theme => ({
 const Things = (props) => {
   const { classes } = props;
 
+
   const thingsToDisplay = props.thingsDatabase.map((singleThing, mapIndex) =>
   (singleThing.company == props.companyName && (props.thingType.indexOf(singleThing.type) !== -1)) && 
               <Thing
@@ -45,6 +47,8 @@ const Things = (props) => {
                 company={singleThing.company}
                 icon={singleThing.icon}
                 img={singleThing.img}
+                changeCurrentThingHandler={props.changeCurrentThingHandler}
+                currentThing={props.currentThing}
                 />
   )
 
@@ -54,14 +58,17 @@ const Things = (props) => {
           <div className={classes.root}>
             <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
               <Grid className={classes.item} item xs={10} >
-                  <Typography variant="h5" component="h3">
-                    TYPE PROVIDED BY CONTEXT API :  {props.thingType}
+                  <Typography color='primary' variant="h5" component="h3">
+                    Selected :  {props.currentThing}
                   </Typography>
                   <Filters
+                    thingType={props.thingType}
                     changeThingTypeHandler={props.changeThingTypeHandler}/>
               </Grid>
               <Grid className={classes.item} item sm={7} xs={12}>
-                <Laptop style={{ color: 'brown' }}/>
+                <Laptop color='secondary'/>
+                <DirectionsCar color='secondary'/>
+                <Business color='secondary'/>
                 <div className={classes.thingsContainer}>
                   {thingsToDisplay.every((el) => el == false) ? <Typography color='primary' variant="h5" component="h3">
                   Nothing on the list 😕 tweak your filter settings ☑
@@ -69,7 +76,9 @@ const Things = (props) => {
                 </div>
               </Grid>
               <Grid className={classes.item} item sm={5} xs={12}>
-                <CloudCircle style={{ color: 'brown' }}/>
+                <Laptop color='secondary'/>
+                <DirectionsCar color='secondary'/>
+                <Business color='secondary'/>
                 <Typography variant="h5" component="h3">
                     Right column
                 </Typography>

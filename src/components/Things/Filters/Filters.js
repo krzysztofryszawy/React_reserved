@@ -18,25 +18,34 @@ const styles = theme => ({
 },
 });
 
+
+
+
 class Filters extends React.Component {
 
     componentDidMount() {
-        this.props.changeThingTypeHandler([this.state.car && 'car', this.state.place && 'place', this.state.equipment && 'equipment'])
+        this.settingState()
     }
 
+
+
   state = {
-    car: true,
-    place: true,
-    equipment: true,
+    car: false,
+    place: false,
+    equipment: false,
   };
 
+//initial setState from data provided with Context API (restoring data when component mounted again)
+  settingState = () => {
+      this.props.thingType.some((el) => el == 'car') == 1 && this.setState({car:true})
+      this.props.thingType.some((el) => el == 'place') == 1 && this.setState({place:true})
+      this.props.thingType.some((el) => el == 'equipment') == 1 && this.setState({equipment:true})
+  }
 
+// sending array with user selection
   handleChange = name => event => {
-    this.setState({ [name]: event.target.checked }, () =>     this.props.changeThingTypeHandler([this.state.car && 'car', this.state.place && 'place', this.state.equipment && 'equipment']));
-    // ONLY FOR TEST HARDCODED TEMPORARY ARRAY
+    this.setState({ [name]: event.target.checked }, () =>     this.props.changeThingTypeHandler([this.state.car && 'car', this.state.place && 'place', this.state.equipment && 'equipment']))
   };
-
-//   changeThingTypeHandler - method to save in context api provider
 
 
 
@@ -48,8 +57,8 @@ class Filters extends React.Component {
     return (
       <div className={classes.root}>
         <FormControl component="fieldset" className={classes.formControl}>
-          <FormLabel component="legend">Filter</FormLabel>
-          <FormGroup>
+          <FormLabel component="legend">What do you want to book?</FormLabel>
+          <FormGroup row>
             <FormControlLabel
               control={
                 <Checkbox checked={car} onChange={this.handleChange('car')} value="car" />
@@ -70,7 +79,7 @@ class Filters extends React.Component {
               label="Equipment"
             />
           </FormGroup>
-          <FormHelperText>Multiple choice</FormHelperText>
+          <FormHelperText>Filter with multiple choice</FormHelperText>
         </FormControl>
       </div>
     );

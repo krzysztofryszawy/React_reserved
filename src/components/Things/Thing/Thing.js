@@ -17,22 +17,30 @@ const styles = {
     media: {
         height: 100,
     },
+    selected: {
+        border: `2px dashed darkorange`,
+        marginTop: '-.5rem'
+    },
 };
 
-const handleClick = (e) => {
-    console.log(e.target)
-}
 
 const Thing = (props) => {
+    
+    const setCurrentThing = () => {
+        props.changeCurrentThingHandler(props.name)
+    }
+
 
     return (
         <div>
-            <Card className={props.classes.card}>
-                <CardActionArea>
+            <Card className={props.currentThing == props.name 
+                        ? `${props.classes.card} ${props.classes.selected}`
+                        : props.classes.card}>                
+                    <CardActionArea>
                     <CardMedia
                     image={require(`../../../assets/images/${props.img.toLowerCase()}.jpg`)}
                     className={props.classes.media}
-                    title="item to burn"
+                    title="thing"
                     />
                     <CardContent>
                         <Typography component="p">
@@ -47,8 +55,8 @@ const Thing = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button onClick={ handleClick} size="small" color="primary" variant="contained">
-                        more info...
+                    <Button onClick={setCurrentThing} size="small" color="secondary" variant="contained">
+                        SELECT
                     </Button>
                 </CardActions>
             </Card>        

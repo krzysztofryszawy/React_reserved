@@ -11,7 +11,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-import { CurrentCompanyConsumer } from '../../../context/CurrentCompanyName.context'
+import { CurrentCompanyConsumer } from '../../../context/CurrentSettings.context'
 
 
 

@@ -12,23 +12,33 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
     card: {
         maxWidth: 145,
-        margin: '.5em'
+        margin: '.5em',
     },
     media: {
         height: 100,
+    },
+    selected: {
+        border: `2px dashed darkorange`,
+        marginTop: '-.5rem',
     },
 };
 
 const Person = (props) => {
 
+    const setCurrentPerson = () => {
+        props.changeCurrentPersonHandler(props.name)
+    }
+
     return (
         <div>
-            <Card className={props.classes.card}>
+            <Card className={props.currentPerson == props.name 
+                        ? `${props.classes.card} ${props.classes.selected}`
+                        : props.classes.card}>
                 <CardActionArea>
                     <CardMedia
                     image={require(`../../../assets/images/${props.img.toLowerCase()}.jpg`)}
                     className={props.classes.media}
-                    title="item to burn"
+                    title="person"
                     />
                     <CardContent>
                         <Typography component="p">
@@ -46,9 +56,9 @@ const Person = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button onClick={ () => props.click(props.name)} size="small" color="secondary" variant="contained">
-                        more info...
-                    </Button>
+                <Button onClick={setCurrentPerson} size="small" color="secondary" variant="contained">
+                        SELECT
+                </Button>
                 </CardActions>
             </Card>        
         </div>

@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles } from '@material-ui/core/styles';
 import { Route, Redirect } from 'react-router-dom'
 
-import { CurrentCompanyConsumer } from '../context/CurrentCompanyName.context'
+import { CurrentSettingsConsumer } from '../context/CurrentSettings.context'
 
 
 import Navbar from '../components/NavBar/NavBar'
@@ -66,35 +66,48 @@ class ReserverdApp extends Component {
     
     render(){
         return(
-            <CurrentCompanyConsumer>
-            {({companyName, changeName, thingType, changeThingTypeHandler, }) => (
-                <React.Fragment>                
-                    <CssBaseline />
-                    <Navbar
-                        companyName={companyName}/>
-                    {companyName == 'Select your Company' && <Redirect to={'/'}/>}
-                    <Route path='/' exact component={Main} />
-                    <Route 
-                        path='/People' 
-                        exact 
-                        render={props => <People 
-                            companyName={companyName}
-                            peopleDatabase={peopleDatabase} />}
-                    />
-                    <Route
-                        path='/Things' 
-                        exact 
-                        render={props => <Things 
-                            companyName={companyName}
-                            thingsDatabase={thingsDatabase}
-                            thingType={thingType} 
-                            changeThingTypeHandler={changeThingTypeHandler} />}
-                    />
-                    <Route path='/Booking' exact component={Booking} />
-                    <Route path='/Help' exact component={Help} />
-                </React.Fragment>
-            )}
-            </CurrentCompanyConsumer>
+            <CurrentSettingsConsumer>
+                {({companyName, changeName, thingType, changeThingTypeHandler, currentThing, changeCurrentThingHandler, currentPerson, changeCurrentPersonHandler}) => (
+                    <React.Fragment>                
+                        <CssBaseline />
+                        <Navbar
+                            companyName={companyName}/>
+                        {companyName == 'Select your Company' && <Redirect to={'/'}/>}
+                        <Route path='/' exact component={Main} />
+                        <Route 
+                            path='/People' 
+                            exact 
+                            render={props => <People 
+                                companyName={companyName}
+                                peopleDatabase={peopleDatabase}
+                                currentPerson={currentPerson}
+                                changeCurrentPersonHandler={changeCurrentPersonHandler} />}
+                        />
+                        <Route
+                            path='/Things' 
+                            exact 
+                            render={props => <Things 
+                                companyName={companyName}
+                                thingsDatabase={thingsDatabase}
+                                thingType={thingType} 
+                                changeThingTypeHandler={changeThingTypeHandler}
+                                currentThing={currentThing}
+                                changeCurrentThingHandler={changeCurrentThingHandler} />}
+                                />
+                        <Route 
+                            path='/Booking' 
+                            exact
+                            render={props => <Booking 
+                                peopleDatabase={peopleDatabase}
+                                thingsDatabase={thingsDatabase}
+                                companyName={companyName}
+                                currentThing={currentThing}
+                                currentPerson={currentPerson} />}
+                        />
+                        <Route path='/Help' exact component={Help} />
+                    </React.Fragment>
+                )}
+            </CurrentSettingsConsumer>
         )
     }
 }

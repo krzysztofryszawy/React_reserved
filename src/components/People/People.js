@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles, withTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Laptop from '@material-ui/icons/Laptop';
+import PeopleIcon from '@material-ui/icons/People';
 import CloudCircle from '@material-ui/icons/CloudCircle';
 
 import Person from './Person/Person'
@@ -43,6 +43,8 @@ const People = (props) => {
                 priority={singlePerson.priority}
                 icon={singlePerson.icon}
                 img={singlePerson.img}
+                currentPerson={props.currentPerson}
+                changeCurrentPersonHandler={props.changeCurrentPersonHandler}
                 />
   )
   
@@ -53,23 +55,22 @@ const People = (props) => {
           <div className={classes.root}>
             <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
               <Grid className={classes.item} item xs={10} >
-                  <Typography variant="h5" component="h3">
-                    People Page
+                  <Typography color='primary' variant="h5" component="h3">
+                    Selected : {props.currentPerson} 
                   </Typography>
-                  <Typography component="p"> provided by Context API </Typography>
-                  <Typography color='secondary' component="p"> {props.companyName.toUpperCase()} </Typography>
+                  <Typography color='secondary' component="p"> is working in {props.companyName.toUpperCase()} </Typography>
               </Grid>
               <Grid className={classes.item} item sm={7} xs={12}>
-                <Laptop style={{ color: 'brown' }}/>
-                <Typography variant="h5" component="h3">
-                  Left column
+                <PeopleIcon color='secondary'/>
+                <Typography gutterBottom variant="h6" component="h6">
+                  Press SELECT to choose
                 </Typography>
                 <div className={classes.peopleContainer}>
                   {peopleToDisplay}
                 </div>
               </Grid>
               <Grid className={classes.item} item sm={5} xs={12}>
-                <CloudCircle style={{ color: 'brown' }}/>
+                <PeopleIcon color='secondary'/>
                 <Typography variant="h5" component="h3">
                     Right column
                 </Typography>

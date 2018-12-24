@@ -4,7 +4,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import deepOrange from '@material-ui/core/colors/deepOrange';
 import brown from '@material-ui/core/colors/brown';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
-import CurrentCompanyProvider from './context/CurrentCompanyName.context'
+import CurrentSettingsProvider from './context/CurrentSettings.context'
 import ReserverdApp from './ReserverdApp/ReserverdApp'
 
 
@@ -28,13 +28,13 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <CurrentCompanyProvider>
+        <CurrentSettingsProvider>
           <MuiThemeProvider theme={theme}>
             <ScrollToTop>
               <ReserverdApp/>
             </ScrollToTop> 
           </MuiThemeProvider>
-        </CurrentCompanyProvider>
+        </CurrentSettingsProvider>
       </BrowserRouter>
     );
   }
