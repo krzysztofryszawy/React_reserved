@@ -13,6 +13,8 @@ import Things from '../components/Things/Things';
 import Booking from '../components/Booking/Booking';
 import Help from '../components/Help/Help';
 
+// https://react-reserved.firebaseio.com/
+
 let peopleDatabase = [
   {
     id: 1,

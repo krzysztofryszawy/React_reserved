@@ -18,7 +18,9 @@ class CurrentSettingsProvider extends Component {
       companyName: providedName,
       thingType: ['car', 'place', 'equipment'],
       currentThing: '',
-      currentPerson: ''
+      currentThingId: '',
+      currentPerson: '',
+      currentPersonId: ''
     });
   };
   changeThingTypeHandler = providedType => {

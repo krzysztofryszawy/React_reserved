@@ -3,6 +3,7 @@ import { withStyles, withTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   root: {
@@ -23,6 +24,7 @@ const styles = theme => ({
     backgroundColor: '#505050',
     textAlign: 'center',
     margin: '.2rem',
+    // border: '1px dashed gray',
     '&:hover': {
       transform: 'scale(1.05)',
       cursor: 'pointer',
@@ -30,10 +32,10 @@ const styles = theme => ({
     }
   },
   reserved: {
-    backgroundColor: 'darkorange',
-    color: 'black',
+    backgroundColor: '#353535',
+    color: 'dimgray',
     '&:hover': {
-      backgroundColor: 'orange'
+      backgroundColor: '#404040'
     }
   }
 });
@@ -42,16 +44,22 @@ const Day = props => {
   // console.log(props);
   const { classes } = props;
   return (
-    <div
+    <Paper
       onClick={() => props.clickHandler(props)}
-      color="secondary"
+      style={
+        props.currentPersonId == props.personId
+          ? { backgroundColor: 'darkorange', color: 'black' }
+          : null
+      }
       className={
         props.reserved ? `${classes.item} ${classes.reserved}` : classes.item
       }
     >
-      {`${props.hour}:00` +
-        (props.personName != undefined ? props.personName : '')}
-    </div>
+      {`${props.hour}:00 - ${props.hour == 23 ? '00' : props.hour + 1}:00` +
+        (props.personName != undefined
+          ? '  📌 reserved by  ' + props.personName
+          : ' available ')}
+    </Paper>
   );
 };
 export default withStyles(styles)(Day);

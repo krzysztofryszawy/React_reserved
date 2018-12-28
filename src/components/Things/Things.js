@@ -29,7 +29,8 @@ const styles = theme => ({
   },
   thingsContainer: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginTop: '2rem'
     // height: '100px',
   }
 });
@@ -75,9 +76,9 @@ const Things = props => {
             />
           </Grid>
           <Grid className={classes.item} item sm={7} xs={12}>
-            <Laptop color="secondary" />
-            <DirectionsCar color="secondary" />
-            <Business color="secondary" />
+            <Laptop color="secondary" fontSize="large" />
+            <DirectionsCar color="secondary" fontSize="large" />
+            <Business color="secondary" fontSize="large" />
             <div className={classes.thingsContainer}>
               {thingsToDisplay.every(el => el == false) ? (
                 <Typography color="primary" variant="h5" component="h3">
@@ -89,18 +90,18 @@ const Things = props => {
             </div>
           </Grid>
           <Grid className={classes.item} item sm={5} xs={12}>
-            <Laptop color="secondary" />
-            <DirectionsCar color="secondary" />
-            <Business color="secondary" />
+            <Laptop color="secondary" fontSize="large" />
+            <DirectionsCar color="secondary" fontSize="large" />
+            <Business color="secondary" fontSize="large" />
             <Typography variant="h5" component="h3">
-              Right column
+              Right column (alpha ☕)
             </Typography>
             <Typography component="p">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis
-              harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum
-              quam facilis rem ducimus doloribus facere soluta repellendus,
-              culpa atque unde voluptatum quasi incidunt? Laudantium amet
-              inventore aliquid reprehenderit iusto facere, atque tempore.
+              Place for future development. Lorem ipsum dolor, sit amet harum
+              dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam
+              facilis rem ducimus doloribus facere soluta repellendus, culpa
+              atque unde voluptatum quasi incidunt? Laudantium amet inventore
+              aliquid reprehenderit iusto facere, atque tempore.
             </Typography>
           </Grid>
         </Grid>

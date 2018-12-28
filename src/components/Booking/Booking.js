@@ -3,7 +3,10 @@ import { withStyles, withTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
-import CloudCircle from '@material-ui/icons/CloudCircle';
+import DirectionsCar from '@material-ui/icons/DirectionsCar';
+import Business from '@material-ui/icons/Business';
+
+import Today from '@material-ui/icons/Today';
 
 import Person from '../People/Person/Person';
 import Thing from '../Things/Thing/Thing';
@@ -28,7 +31,8 @@ const styles = theme => ({
   },
   currentSelectContainer: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginTop: '4rem'
   }
 });
 
@@ -49,7 +53,7 @@ const Booking = props => {
           img={singlePerson.img}
           currentPerson={props.currentPerson}
           currentPersonId={props.currentPersonId}
-          changeCurrentPersonHandler={props.changeCurrentPersonHandler}
+          changeCurrentPersonHandler={() => null}
         />
       )
   );
@@ -67,7 +71,7 @@ const Booking = props => {
           img={singleThing.img}
           currentThing={props.currentThing}
           currentThingId={props.currentThingId}
-          changeCurrentThingHandler={props.changeCurrentThingHandler}
+          changeCurrentThingHandler={() => null}
         />
       )
   );
@@ -93,17 +97,19 @@ const Booking = props => {
             </Typography>
           </Grid>
           <Grid className={classes.item} item sm={4} xs={12}>
-            <Laptop style={{ color: 'brown' }} />
+            <Laptop color="secondary" fontSize="large" />
+            <DirectionsCar color="secondary" fontSize="large" />
+            <Business color="secondary" fontSize="large" />
             <Typography
               gutterBottom
-              color="secondary"
+              color="primary"
               variant="h5"
               component="h3"
             >
               {currentPersonToDisplay.every(el => el == false)
                 ? 'Choose from menu above person and thing to booking'
                 : props.currentPerson +
-                  '  is going to book' +
+                  '  is going to book  ' +
                   props.currentThing}
             </Typography>
             <div className={classes.currentSelectContainer}>
@@ -112,16 +118,21 @@ const Booking = props => {
             </div>
           </Grid>
           <Grid className={classes.item} item sm={8} xs={12}>
-            <CloudCircle style={{ color: 'brown' }} />
-            <Typography variant="h5" component="h3">
-              Right column
+            <Today color="secondary" fontSize="large" />
+            <Typography color="primary" variant="h5" component="h3">
+              Choose date of reservation
             </Typography>
             <Typography component="h6">
-              {props.currentThingId ? <Days
-                currentPersonName={props.currentPerson}
-                currentPersonId={props.currentPersonId}
-                currentThingName={props.currentThing}
-                currentThingId={props.currentThingId}/> : 'choose thing' }
+              {props.currentThingId ? (
+                <Days
+                  currentPersonName={props.currentPerson}
+                  currentPersonId={props.currentPersonId}
+                  currentThingName={props.currentThing}
+                  currentThingId={props.currentThingId}
+                />
+              ) : (
+                'choose thing 😑'
+              )}
             </Typography>
           </Grid>
         </Grid>

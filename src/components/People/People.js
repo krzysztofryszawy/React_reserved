@@ -25,7 +25,8 @@ const styles = theme => ({
   },
   peopleContainer: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginTop: '2rem'
   }
 });
 
@@ -70,23 +71,24 @@ const People = props => {
             </Typography>
           </Grid>
           <Grid className={classes.item} item sm={7} xs={12}>
-            <PeopleIcon color="secondary" />
+            <PeopleIcon color="secondary" fontSize="large" />
             <Typography gutterBottom variant="h6" component="h6">
               Press SELECT to choose
             </Typography>
             <div className={classes.peopleContainer}>{peopleToDisplay}</div>
           </Grid>
           <Grid className={classes.item} item sm={5} xs={12}>
-            <PeopleIcon color="secondary" />
+            <PeopleIcon color="secondary" fontSize="large" />
             <Typography variant="h5" component="h3">
-              Right column
+              Right column (alpha ☕)
             </Typography>
             <Typography component="p">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis
-              harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum
-              quam facilis rem ducimus doloribus facere soluta repellendus,
-              culpa atque unde voluptatum quasi incidunt? Laudantium amet
-              inventore aliquid reprehenderit iusto facere, atque tempore.
+              Place for future development. Lorem ipsum dolor, sit amet
+              consectetur adipisicing elit. Nobis harum dolorum perspiciatis
+              fugiat eaque dolores cupiditate laborum quam facilis rem ducimus
+              doloribus facere soluta repellendus, culpa atque unde voluptatum
+              quasi incidunt? Laudantium amet inventore aliquid reprehenderit
+              iusto facere, atque tempore.
             </Typography>
           </Grid>
         </Grid>

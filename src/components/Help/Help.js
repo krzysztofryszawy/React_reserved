@@ -2,9 +2,8 @@ import React from 'react';
 import { withStyles, withTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Laptop from '@material-ui/icons/Laptop';
-import CloudCircle from '@material-ui/icons/CloudCircle';
-
+import ChildFriendly from '@material-ui/icons/ChildFriendly';
+import Today from '@material-ui/icons/Today';
 
 const styles = theme => ({
   root: {
@@ -16,53 +15,86 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       width: '95vw',
       marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+      marginRight: 'auto'
+    }
   },
-  item: {
-    // margin: theme.spacing.unit * 2,
+  imgClass: {
+    maxWidth: '20vh',
+    [theme.breakpoints.up('md')]: {
+      maxWidth: '30vh'
+    }
   }
 });
 
-const Help = (props) => {
+const Help = props => {
   const { classes } = props;
 
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
-          <Grid className={classes.item} item xs={10} >
-              <Typography color='secondary' variant="h5" component="h3">
-                Help Page
-              </Typography>
-              <Typography component="p">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa minima veritatis libero non tempora reprehenderit quasi laudantium quisquam aperiam. Reprehenderit obcaecati nobis eveniet quo odio enim culpa magni eos fugiat?
-              </Typography>
+        <Grid
+          container
+          direction="row"
+          justify="space-between"
+          alignItems="stretch"
+          spacing={24}
+        >
+          <Grid className={classes.item} item xs={10}>
+            <Typography color="secondary" variant="h5" component="h3">
+              Help Page
+            </Typography>
+            <img
+              className={classes.imgClass}
+              src={require(`../../assets/images/help.png`)}
+              alt=""
+            />
+            <Typography component="p">
+              This Company Booking Platform provides Multi-Company multi user
+              functionality, to make sharing things as easy as possible. Thanks
+              to app you can check availibility of meeting rooms, cars, office
+              equipment and more! Then you can book this stuff for your needs.
+            </Typography>
           </Grid>
           <Grid className={classes.item} item sm={5} xs={12}>
-            <Laptop style={{ color: 'brown' }}/>
+            <ChildFriendly color="secondary" fontSize="large" />
             <Typography variant="h5" component="h3">
-              Left column
+              Beginning
             </Typography>
             <Typography component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, at! Ab aliquid id, quibusdam nemo blanditiis odit autem vel repellendus minima fuga porro possimus, sint, et suscipit ducimus quas. Labore.
+              At first view you have to select your Company, then other options
+              will be available. Now Company name is visible in right of navbar,
+              and you can go to next tabs. Choose People tab to select person,
+              who want to make booking. Next step, choose Things tab to select
+              thing you want to book. You can use filters to make it easier.
             </Typography>
           </Grid>
           <Grid className={classes.item} item sm={5} xs={12}>
-            <CloudCircle style={{ color: 'brown' }}/>
+            <Today color="secondary" fontSize="large" />
             <Typography variant="h5" component="h3">
-                Right column
+              Booking
             </Typography>
-            <Typography component="p">              
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam facilis rem ducimus doloribus facere soluta repellendus, culpa atque unde voluptatum quasi incidunt? Laudantium amet inventore aliquid reprehenderit iusto facere, atque tempore.
+            <Typography component="p">
+              When you have choosed thing to book, you can easy check
+              availibility of that thing, just switch to Booking tab. By
+              changing date you can check other days.
+            </Typography>
+            <Typography component="p">
+              To make reservation you have to choose Person. To make reservation
+              click on desired start hour. Now click once more at reservation
+              end hour. No funny guy, you cant choose end hour before start
+              hour. If you want to remove reservation click at this hour. You
+              can delete reservations only made by you. We are working on
+              GodMode for these cases (alpha).
+            </Typography>
+            <Typography component="p">
+              Enjoy, all your reservation data are stored on cloud, and always
+              available when you need it.
             </Typography>
           </Grid>
         </Grid>
       </div>
-      
     </React.Fragment>
   );
-}
-
+};
 
 export default withStyles(styles)(Help);
