@@ -5,9 +5,10 @@ import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
 import CloudCircle from '@material-ui/icons/CloudCircle';
 
-import Person from '../People/Person/Person'
-import Thing from '../Things/Thing/Thing'
+import Person from '../People/Person/Person';
+import Thing from '../Things/Thing/Thing';
 
+import Days from '../../components/Calendar/Days/Days';
 
 const styles = theme => ({
   root: {
@@ -19,85 +20,114 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       width: '95vw',
       marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+      marginRight: 'auto'
+    }
   },
   item: {
     // margin: theme.spacing.unit * 2,
   },
   currentSelectContainer: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap'
   }
 });
 
-const Booking = (props) => {
+const Booking = props => {
   const { classes } = props;
 
-  const currentPersonToDisplay = props.peopleDatabase.map((singlePerson, mapIndex) => 
-  ((singlePerson.name == props.currentPerson) && (props.companyName == singlePerson.company)) && 
-              <Person
-                key={singlePerson.name+mapIndex}
-                name={singlePerson.name}
-                company={singlePerson.company}
-                priority={singlePerson.priority}
-                icon={singlePerson.icon}
-                img={singlePerson.img}
-                currentPerson={props.currentPerson}
-                changeCurrentPersonHandler={props.changeCurrentPersonHandler}
-                />
-  )
+  const currentPersonToDisplay = props.peopleDatabase.map(
+    (singlePerson, mapIndex) =>
+      singlePerson.id === props.currentPersonId &&
+      props.companyName === singlePerson.company && (
+        <Person
+          key={singlePerson.name + mapIndex}
+          id={singlePerson.id}
+          name={singlePerson.name}
+          company={singlePerson.company}
+          priority={singlePerson.priority}
+          icon={singlePerson.icon}
+          img={singlePerson.img}
+          currentPerson={props.currentPerson}
+          currentPersonId={props.currentPersonId}
+          changeCurrentPersonHandler={props.changeCurrentPersonHandler}
+        />
+      )
+  );
 
-  const currentThingToDisplay = props.thingsDatabase.map((singleThing, mapIndex) =>
-  ((singleThing.name == props.currentThing) && (props.companyName == singleThing.company)) &&
-              <Thing
-                key={singleThing.name+mapIndex}
-                name={singleThing.name}
-                company={singleThing.company}
-                icon={singleThing.icon}
-                img={singleThing.img}
-                changeCurrentThingHandler={props.changeCurrentThingHandler}
-                currentThing={props.currentThing}
-                />
-  )
+  const currentThingToDisplay = props.thingsDatabase.map(
+    (singleThing, mapIndex) =>
+      singleThing.id === props.currentThingId &&
+      props.companyName === singleThing.company && (
+        <Thing
+          key={singleThing.name + mapIndex}
+          id={singleThing.id}
+          name={singleThing.name}
+          company={singleThing.company}
+          icon={singleThing.icon}
+          img={singleThing.img}
+          currentThing={props.currentThing}
+          currentThingId={props.currentThingId}
+          changeCurrentThingHandler={props.changeCurrentThingHandler}
+        />
+      )
+  );
 
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Grid container direction="row" justify="space-between" alignItems="stretch" spacing={24}>
-          <Grid className={classes.item} item xs={12} >
-              <Typography gutterBottom color='primary' variant="h5" component="h3">
-                {props.currentPerson} is going to book {props.currentThing}
-              </Typography>
-              <div className={classes.currentSelectContainer}>
-                {currentPersonToDisplay}              
-                {currentThingToDisplay}
-              </div>
-          </Grid>
-          <Grid className={classes.item} item sm={5} xs={12}>
-            <Laptop style={{ color: 'brown' }}/>
-            <Typography variant="h5" component="h3">
-              Left column
-            </Typography>
-            <Typography component="p">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, at! Ab aliquid id, quibusdam nemo blanditiis odit autem vel repellendus minima fuga porro possimus, sint, et suscipit ducimus quas. Labore.
+        <Grid
+          container
+          direction="row"
+          justify="space-between"
+          alignItems="stretch"
+          spacing={24}
+        >
+          <Grid className={classes.item} item xs={12}>
+            <Typography
+              gutterBottom
+              color="primary"
+              variant="h5"
+              component="h3"
+            >
+              Booking part
             </Typography>
           </Grid>
-          <Grid className={classes.item} item sm={5} xs={12}>
-            <CloudCircle style={{ color: 'brown' }}/>
-            <Typography variant="h5" component="h3">
-                Right column
+          <Grid className={classes.item} item sm={4} xs={12}>
+            <Laptop style={{ color: 'brown' }} />
+            <Typography
+              gutterBottom
+              color="secondary"
+              variant="h5"
+              component="h3"
+            >
+              {currentPersonToDisplay.every(el => el == false)
+                ? 'Choose from menu above person and thing to booking'
+                : props.currentPerson +
+                  '  is going to book' +
+                  props.currentThing}
             </Typography>
-            <Typography component="p">              
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam facilis rem ducimus doloribus facere soluta repellendus, culpa atque unde voluptatum quasi incidunt? Laudantium amet inventore aliquid reprehenderit iusto facere, atque tempore.
+            <div className={classes.currentSelectContainer}>
+              {currentPersonToDisplay}
+              {currentThingToDisplay}
+            </div>
+          </Grid>
+          <Grid className={classes.item} item sm={8} xs={12}>
+            <CloudCircle style={{ color: 'brown' }} />
+            <Typography variant="h5" component="h3">
+              Right column
+            </Typography>
+            <Typography component="h6">
+              {props.currentThingId ? <Days
+                currentPersonName={props.currentPerson}
+                currentPersonId={props.currentPersonId}
+                currentThingName={props.currentThing}
+                currentThingId={props.currentThingId}/> : 'choose thing' }
             </Typography>
           </Grid>
         </Grid>
       </div>
-      
     </React.Fragment>
   );
-}
-
+};
 
 export default withStyles(styles)(Booking);
