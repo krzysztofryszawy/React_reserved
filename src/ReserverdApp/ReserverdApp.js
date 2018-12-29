@@ -289,7 +289,10 @@ class ReserverdApp extends Component {
         }) => (
           <React.Fragment>
             <CssBaseline />
-            <Navbar companyName={companyName} />
+            <Navbar
+              companyName={companyName}
+              themechangeHandler={this.props.themechangeHandler}
+            />
             {companyName == 'Select your Company' && <Redirect to={'/'} />}
             <Route path="/" exact component={Main} />
             <Route

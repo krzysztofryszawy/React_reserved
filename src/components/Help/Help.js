@@ -49,10 +49,11 @@ const Help = props => {
               alt=""
             />
             <Typography component="p">
-              This Company Booking Platform provides Multi-Company multi user
-              functionality, to make sharing things as easy as possible. Thanks
-              to app you can check availibility of meeting rooms, cars, office
-              equipment and more! Then you can book this stuff for your needs.
+              This App provides Multi-Company Multi-User Company Booking
+              Platform, with functionality, that makes sharing things as easy as
+              possible. Thanks to app you can check availibility of meeting
+              rooms, cars, office equipment and even more! Then you can easy
+              book this stuff for your needs.
             </Typography>
           </Grid>
           <Grid className={classes.item} item sm={5} xs={12}>
@@ -74,16 +75,16 @@ const Help = props => {
               Booking
             </Typography>
             <Typography component="p">
-              When you have choosed thing to book, you can easy check
-              availibility of that thing, just switch to Booking tab. By
-              changing date you can check other days.
+              Once you have chosen thing to book, you can easy check
+              availibility of that, just switch to Booking tab. By changing date
+              you can check other days.
             </Typography>
             <Typography component="p">
               To make reservation you have to choose Person. To make reservation
               click on desired start hour. Now click once more at reservation
-              end hour. No funny guy, you cant choose end hour before start
-              hour. If you want to remove reservation click at this hour. You
-              can delete reservations only made by you. We are working on
+              end hour. No, you funny guy, you can't choose end hour, before
+              start hour. If you want to remove reservation click at this hour.
+              You can delete reservations only made by you. We are working on
               GodMode for these cases (alpha).
             </Typography>
             <Typography component="p">
@@ -93,6 +94,26 @@ const Help = props => {
           </Grid>
         </Grid>
       </div>
+      <footer>
+        <Typography
+          variant="caption"
+          color="secondary"
+          align="center"
+          gutterBottom
+        >
+          CompanyBookingPlatform (alpha)
+        </Typography>
+        <Typography
+          variant="caption"
+          align="center"
+          color="secondary"
+          component="div"
+        >
+          This Company Booking Platform App was designed, developed and produced
+          by a multicultural team of various beliefs, sexual orientations and
+          gender identities.
+        </Typography>
+      </footer>
     </React.Fragment>
   );
 };

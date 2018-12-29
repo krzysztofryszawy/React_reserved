@@ -9,7 +9,8 @@ class CurrentSettingsProvider extends Component {
     currentThingId: '',
     currentThing: '',
     currentPersonId: '',
-    currentPerson: ''
+    currentPerson: '',
+    themeSwitched: false
   };
 
   // changing company name causes also reseting to default some states, which belongs to other company names
@@ -22,6 +23,9 @@ class CurrentSettingsProvider extends Component {
       currentPerson: '',
       currentPersonId: ''
     });
+  };
+  themeSwitchedHandler = switchPosition => {
+    this.setState({ themeSwitched: switchPosition });
   };
   changeThingTypeHandler = providedType => {
     this.setState({ thingType: providedType });
@@ -53,7 +57,9 @@ class CurrentSettingsProvider extends Component {
           changeCurrentThingHandler: this.changeCurrentThingHandler,
           currentPerson: this.state.currentPerson,
           currentPersonId: this.state.currentPersonId,
-          changeCurrentPersonHandler: this.changeCurrentPersonHandler
+          changeCurrentPersonHandler: this.changeCurrentPersonHandler,
+          themeSwitched: this.state.themeSwitched,
+          themeSwitchedHandler: this.themeSwitchedHandler
         }}
       >
         {children}

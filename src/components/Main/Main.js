@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
 import CloudCircle from '@material-ui/icons/CloudCircle';
-
 import { CurrentSettingsConsumer } from '../../context/CurrentSettings.context';
 
 import Form from './Form/Form';

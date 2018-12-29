@@ -24,6 +24,11 @@ const styles = theme => ({
       width: '95vw',
       marginLeft: 'auto',
       marginRight: 'auto'
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing.unit,
+      marginLeft: 'auto',
+      marginRight: 'auto'
     }
   },
   item: {
@@ -96,7 +101,7 @@ const Booking = props => {
               Booking part
             </Typography>
           </Grid>
-          <Grid className={classes.item} item sm={4} xs={12}>
+          <Grid className={classes.item} item md={4} sm={6} xs={12}>
             <Laptop color="secondary" fontSize="large" />
             <DirectionsCar color="secondary" fontSize="large" />
             <Business color="secondary" fontSize="large" />
@@ -117,7 +122,7 @@ const Booking = props => {
               {currentThingToDisplay}
             </div>
           </Grid>
-          <Grid className={classes.item} item sm={8} xs={12}>
+          <Grid className={classes.item} item md={8} sm={6} xs={12}>
             <Today color="secondary" fontSize="large" />
             <Typography color="primary" variant="h5" component="h3">
               Choose date of reservation

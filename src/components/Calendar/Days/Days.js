@@ -4,6 +4,7 @@ import { withStyles, withTheme } from '@material-ui/core/styles';
 import axios from '../../../axios-instance';
 import TextField from '@material-ui/core/TextField';
 
+import Spinner from '../../Spinner/Spinner';
 const styles = theme => ({
   container: {
     width: '100%',
@@ -191,7 +192,7 @@ class Days extends Component {
     const { classes } = this.props;
 
     if (this.state.loading) {
-      return <div> LOADING</div>;
+      return <Spinner />;
     }
 
     return (

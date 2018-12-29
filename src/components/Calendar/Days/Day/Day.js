@@ -21,14 +21,15 @@ const styles = theme => ({
     transition: 'transform .2s ease-out',
     width: '100%',
     flexGrow: 1,
-    backgroundColor: '#505050',
+    backgroundColor: theme.palette.grey[300],
+    color: 'black',
     textAlign: 'center',
     margin: '.2rem',
     // border: '1px dashed gray',
     '&:hover': {
       transform: 'scale(1.05)',
       cursor: 'pointer',
-      backgroundColor: '#606060'
+      backgroundColor: theme.palette.grey[500]
     }
   },
   reserved: {

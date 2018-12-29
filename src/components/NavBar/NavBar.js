@@ -4,33 +4,35 @@ import { NavLink } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 
+import SwitchTheme from '../SwitchTheme/SwitchTheme';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: '#202020',
+    backgroundColor: theme.palette.grey[900],
     zIndex: '99999',
-    // overflow: 'hidden',
     position: 'fixed',
     top: 0,
-    // marginBottom: '2rem',
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'stretch',
-    // flexWrap: 'wrap',
+    fontWeight: 800,
+    userSelect: 'none',
     [theme.breakpoints.down(520)]: {
       justifyContent: 'space-evenly'
-    },
-    fontWeight: 800,
-    userSelect: 'none'
+    }
+    // overflow: 'hidden',
+    // marginBottom: '2rem',
+    // flexWrap: 'wrap',
   },
   link: {
     textDecoration: 'none',
     padding: '1rem',
     marginRight: '1rem',
-    color: 'darkorange',
+    color: theme.palette.primary.dark,
     '&:hover': {
-      backgroundColor: 'darkorange',
+      backgroundColor: theme.palette.primary.main,
       color: '#202020',
       transform: 'translateY(5px)'
     },
@@ -47,14 +49,14 @@ const styles = theme => ({
     }
   },
   activeLink: {
-    backgroundColor: 'darkorange',
+    backgroundColor: theme.palette.primary.main,
     color: '#202020',
     transform: 'translateY(5px)'
   },
   logo: {
     margin: '.5rem',
     padding: '.5rem',
-    backgroundColor: '#3E2723',
+    backgroundColor: theme.palette.grey[800],
     color: '#202020',
     textAlign: 'center',
     [theme.breakpoints.down(520)]: {
@@ -134,6 +136,9 @@ class NavBar extends React.Component {
             {this.props.companyName == 'Emerald Forest' && ' 🌳'}
             {this.props.companyName == 'Aviation' && ' ✈'}
             {this.props.companyName == 'Greyhound' && ' 🐕'}
+          </div>
+          <div>
+            <SwitchTheme themechangeHandler={this.props.themechangeHandler} />
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
   "name": "reserved",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://krzysztofryszawy.github.io/React_reserved",
   "dependencies": {
     "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
@@ -14,6 +15,8 @@
     "react-scripts": "2.1.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

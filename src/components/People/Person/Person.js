@@ -8,19 +8,23 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const styles = {
+const styles = theme => ({
   card: {
-    maxWidth: 145,
-    margin: '.5em'
+    maxWidth: 135,
+    margin: '.5em',
+    opacity: 0.3,
+    '&:hover': {
+      opacity: 1
+    }
   },
   media: {
     height: 100
   },
   selected: {
-    border: `2px dashed darkorange`,
-    marginTop: '-.5rem'
+    opacity: 1,
+    border: `2px dashed ${theme.palette.primary.main}`
   }
-};
+});
 
 const Person = props => {
   const setCurrentPerson = () => {
