@@ -1,9 +1,7 @@
 import React from 'react';
-import { withStyles, withTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Laptop from '@material-ui/icons/Laptop';
-import CloudCircle from '@material-ui/icons/CloudCircle';
 import { CurrentSettingsConsumer } from '../../context/CurrentSettings.context';
 
 import Form from './Form/Form';
@@ -13,7 +11,6 @@ const styles = theme => ({
     flexGrow: 1,
     marginTop: '5rem',
     padding: theme.spacing.unit * 3,
-    // borderBottom: `1px solid ${theme.palette.divider}`,
     width: 'auto',
     [theme.breakpoints.up('md')]: {
       width: '80vw',
@@ -58,12 +55,6 @@ const Main = props => {
               alignItems="stretch"
               spacing={24}
             >
-              {/* <Grid className={classes.item} item xs={10} >
-                <Laptop style={{ color: 'brown' }}/>
-                  <Typography variant="h5" component="h3">
-                    Main Page
-                  </Typography>
-              </Grid> */}
               <Grid className={classes.item} item sm={5} xs={12}>
                 <img
                   className={classes.imgClass}
@@ -76,13 +67,6 @@ const Main = props => {
               </Grid>
               <Grid className={classes.item} item sm={5} xs={12}>
                 <Form changeName={changeName} companyName={companyName} />
-                {/* <CloudCircle style={{ color: 'brown' }}/>
-                <Typography  variant="h5" component="h3">
-                    Right column
-                </Typography>
-                <Typography component="p">              
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis harum dolorum perspiciatis fugiat eaque dolores cupiditate laborum quam facilis rem ducimus doloribus facere soluta repellendus, culpa atque unde voluptatum quasi incidunt? Laudantium amet inventore aliquid reprehenderit iusto facere, atque tempore.
-                </Typography> */}
               </Grid>
             </Grid>
           </div>

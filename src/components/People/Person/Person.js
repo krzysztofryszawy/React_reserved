@@ -27,6 +27,7 @@ const styles = theme => ({
 });
 
 const Person = props => {
+  //passing data by method provided by ContextAPI
   const setCurrentPerson = () => {
     props.changeCurrentPersonHandler(props.id, props.name);
   };

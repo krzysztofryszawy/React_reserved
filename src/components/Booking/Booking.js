@@ -1,16 +1,13 @@
 import React from 'react';
-import { withStyles, withTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
 import DirectionsCar from '@material-ui/icons/DirectionsCar';
 import Business from '@material-ui/icons/Business';
-
 import Today from '@material-ui/icons/Today';
-
 import Person from '../People/Person/Person';
 import Thing from '../Things/Thing/Thing';
-
 import Days from '../../components/Calendar/Days/Days';
 
 const styles = theme => ({
@@ -30,9 +27,6 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto'
     }
-  },
-  item: {
-    // margin: theme.spacing.unit * 2,
   },
   currentSelectContainer: {
     display: 'flex',

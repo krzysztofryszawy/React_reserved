@@ -1,9 +1,8 @@
 import React from 'react';
-import { withStyles, withTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import PeopleIcon from '@material-ui/icons/People';
-import CloudCircle from '@material-ui/icons/CloudCircle';
 
 import Person from './Person/Person';
 
@@ -20,9 +19,6 @@ const styles = theme => ({
       marginRight: 'auto'
     }
   },
-  item: {
-    // margin: theme.spacing.unit * 2,
-  },
   peopleContainer: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -33,6 +29,7 @@ const styles = theme => ({
 const People = props => {
   const { classes } = props;
 
+  //filters people only with proper companyName
   const peopleToDisplay = props.peopleDatabase.map(
     (singlePerson, mapIndex) =>
       singlePerson.company == props.companyName && (

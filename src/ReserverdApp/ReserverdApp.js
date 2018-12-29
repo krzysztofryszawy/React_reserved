@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles } from '@material-ui/core/styles';
-import { Route, Redirect } from 'react-router-dom';
-
 import { CurrentSettingsConsumer } from '../context/CurrentSettings.context';
-
 import Navbar from '../components/NavBar/NavBar';
-
 import Main from '../components/Main/Main';
 import People from '../components/People/People';
 import Things from '../components/Things/Things';
 import Booking from '../components/Booking/Booking';
 import Help from '../components/Help/Help';
-
-// https://react-reserved.firebaseio.com/
 
 let peopleDatabase = [
   {
@@ -277,7 +272,6 @@ class ReserverdApp extends Component {
       <CurrentSettingsConsumer>
         {({
           companyName,
-          changeName,
           thingType,
           changeThingTypeHandler,
           currentThing,

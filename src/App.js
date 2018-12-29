@@ -3,10 +3,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import orange from '@material-ui/core/colors/orange';
 import brown from '@material-ui/core/colors/brown';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import CurrentSettingsProvider from './context/CurrentSettings.context';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import ReserverdApp from './ReserverdApp/ReserverdApp';
-import { dark } from '@material-ui/core/styles/createPalette';
 
 let theme = createMuiTheme({
   typography: {
@@ -25,7 +24,6 @@ let theme = createMuiTheme({
   }
 });
 
-console.log(theme.palette);
 class App extends Component {
   // changing theme by user settings from NavBar. Needs forceUpdate to rerender because setings dont change state or props
   themechangeHandler = value => {

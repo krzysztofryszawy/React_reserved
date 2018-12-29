@@ -1,12 +1,10 @@
 import React from 'react';
-import { withStyles, withTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Laptop from '@material-ui/icons/Laptop';
 import DirectionsCar from '@material-ui/icons/DirectionsCar';
 import Business from '@material-ui/icons/Business';
-
-import { CurrentCompanyConsumer } from '../../context/CurrentSettings.context';
 
 import Thing from './Thing/Thing';
 import Filters from './Filters/Filters';
@@ -24,20 +22,17 @@ const styles = theme => ({
       marginRight: 'auto'
     }
   },
-  item: {
-    // margin: theme.spacing.unit * 2,
-  },
   thingsContainer: {
     display: 'flex',
     flexWrap: 'wrap',
     marginTop: '2rem'
-    // height: '100px',
   }
 });
 
 const Things = props => {
   const { classes } = props;
 
+  //filters things only with proper companyName and filter settings (looking for type in any position of array)
   const thingsToDisplay = props.thingsDatabase.map(
     (singleThing, mapIndex) =>
       singleThing.company == props.companyName &&

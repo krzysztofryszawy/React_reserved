@@ -51,7 +51,6 @@ class Filters extends React.Component {
   render() {
     const { classes } = this.props;
     const { car, place, equipment } = this.state;
-    const error = [car, place, equipment].filter(v => v).length !== 2;
 
     return (
       <div className={classes.root}>

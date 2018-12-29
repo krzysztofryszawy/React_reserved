@@ -23,7 +23,6 @@ const styles = theme => ({
   selected: {
     opacity: 1,
     border: `2px dashed ${theme.palette.primary.main}`
-    // marginTop: '-.5rem'
   }
 });
 

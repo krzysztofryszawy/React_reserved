@@ -1,9 +1,6 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
 import { withStyles } from '@material-ui/core/styles';
-
 import SwitchTheme from '../SwitchTheme/SwitchTheme';
 
 const styles = theme => ({
@@ -22,9 +19,6 @@ const styles = theme => ({
     [theme.breakpoints.down(520)]: {
       justifyContent: 'space-evenly'
     }
-    // overflow: 'hidden',
-    // marginBottom: '2rem',
-    // flexWrap: 'wrap',
   },
   link: {
     textDecoration: 'none',
@@ -42,10 +36,7 @@ const styles = theme => ({
       padding: '.5rem',
       marginRight: 0,
       marginLeft: '.1rem',
-      fontWeight: 500,
-      '&:hover': {
-        // transform: 'translateX(10px) translateY(5px)',
-      }
+      fontWeight: 500
     }
   },
   activeLink: {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Day from './Day/Day';
-import { withStyles, withTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import axios from '../../../axios-instance';
 import TextField from '@material-ui/core/TextField';
 
@@ -31,6 +31,7 @@ class Days extends Component {
     reservationDate: new Date().toISOString().substr(0, 10)
   };
 
+  //generate default object with common data needed to manage reservations
   generate = provided => {
     let temporary = {};
     let item = [];
@@ -40,13 +41,13 @@ class Days extends Component {
         id: i,
         hour: i,
         reserved: false
-        // reservationDate: null
       };
       temporary = { [provided]: item };
     }
     return temporary;
   };
 
+  //saving unique data single day + single thing info with reservations
   saveReservationsHandler = () => {
     axios
       .put(
@@ -56,13 +57,14 @@ class Days extends Component {
         this.state.singleDay
       )
       .then(response => {
-        console.log(response);
+        // console.log(response);
       })
       .catch(error => {
         console.log(error);
       });
   };
 
+  //loading specified data - by thing + specific day. If there is no such data means that was no reservations yet => create empty data
   getReservationsHandler = () => {
     this.setState({ loading: true });
     axios
@@ -85,6 +87,7 @@ class Days extends Component {
       });
   };
 
+  //marking selected hours as reserved, and then saving at database
   addingReservation = () => {
     let localSingleDay = this.state.singleDay;
     for (let i = this.state.startHour; i <= this.state.endHour; i++) {
@@ -100,6 +103,7 @@ class Days extends Component {
     this.saveReservationsHandler();
   };
 
+  //marking selected hours as available, and then saving at database
   removingReservation = () => {
     let localSingleDay = this.state.singleDay;
     for (let i = this.state.startHour; i <= this.state.endHour; i++) {
@@ -112,6 +116,7 @@ class Days extends Component {
     this.saveReservationsHandler();
   };
 
+  //creating state default object ready to manage reservations
   createDay = () => {
     //database common for all things
     const allDatabaseSingleDay = this.generate(this.props.currentThingId);
@@ -173,17 +178,17 @@ class Days extends Component {
     }
   };
 
+  //handler for date input
   changeResevationDate = e => {
     this.setState({ reservationDate: e.target.value });
   };
 
   componentDidMount() {
     this.getReservationsHandler();
-    // this.setDefaultDate();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    //managing database when date changed inside component, there is no props provided
+    //managing database when date changed inside component, because there is no props provided
     prevState.reservationDate != this.state.reservationDate &&
       this.getReservationsHandler();
   }
