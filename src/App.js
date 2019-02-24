@@ -27,7 +27,7 @@ let theme = createMuiTheme({
 class App extends Component {
   // changing theme by user settings from NavBar. Needs forceUpdate to rerender because setings dont change state or props
   themechangeHandler = value => {
-    value == 'light'
+    value === 'light'
       ? (theme = createMuiTheme({
           typography: {
             useNextVariants: true

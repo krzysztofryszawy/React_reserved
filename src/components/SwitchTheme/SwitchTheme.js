@@ -24,7 +24,6 @@ class SwitchTheme extends React.Component {
             value="checked"
           />
         }
-        label={this.state.checked ? '🌛' : '🌞'}
       />
     );
   }

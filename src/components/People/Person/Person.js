@@ -36,7 +36,7 @@ const Person = props => {
     <div>
       <Card
         className={
-          props.currentPersonId == props.id
+          props.currentPersonId === props.id
             ? `${props.classes.card} ${props.classes.selected}`
             : props.classes.card
         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, withTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
@@ -45,7 +45,7 @@ const Day = props => {
       onClick={() => props.clickHandler(props)}
       // special style to mark with different color, reservations made by current person
       style={
-        props.currentPersonId == props.personId
+        props.currentPersonId === props.personId
           ? { backgroundColor: 'darkorange', color: 'black' }
           : null
       }
@@ -55,8 +55,8 @@ const Day = props => {
       }
     >
       {/* text inside single hour cell - (H:MM - H:MM Person name || available) */}
-      {`${props.hour}:00 - ${props.hour == 23 ? '00' : props.hour + 1}:00` +
-        (props.personName != undefined
+      {`${props.hour}:00 - ${props.hour === 23 ? '00' : props.hour + 1}:00` +
+        (props.personName !== undefined
           ? '  📌 reserved by  ' + props.personName
           : ' available ')}
     </Paper>

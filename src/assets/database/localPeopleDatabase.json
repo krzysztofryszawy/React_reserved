@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Vincent Vega",
+    "company": "Emerald Forest",
+    "priority": true,
+    "icon": "👨",
+    "img": "vincentvega"
+  },
+  {
+    "id": 2,
+    "name": "Jules Winnfield",
+    "company": "Emerald Forest",
+    "priority": false,
+    "icon": "👨",
+    "img": "juleswinnfield"
+  },
+  {
+    "id": 3,
+    "name": "Mia Wallace",
+    "company": "Aviation",
+    "priority": true,
+    "icon": "👩",
+    "img": "miawallace"
+  },
+  {
+    "id": 4,
+    "name": "Winston Wolfe",
+    "company": "Aviation",
+    "priority": false,
+    "icon": "👨",
+    "img": "winstonwolfe"
+  },
+  {
+    "id": 5,
+    "name": "Marsellus Wallace",
+    "company": "Aviation",
+    "priority": true,
+    "icon": "👨",
+    "img": "marselluswallace"
+  },
+  {
+    "id": 6,
+    "name": "Captain Koons",
+    "company": "Greyhound",
+    "priority": false,
+    "icon": "👨",
+    "img": "captainkoons"
+  },
+  {
+    "id": 7,
+    "name": "Butch Coolidge",
+    "company": "Greyhound",
+    "priority": false,
+    "icon": "👨",
+    "img": "butchcoolidge"
+  }
+]

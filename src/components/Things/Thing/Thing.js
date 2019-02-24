@@ -35,7 +35,7 @@ const Thing = props => {
     <div>
       <Card
         className={
-          props.currentThingId == props.id
+          props.currentThingId === props.id
             ? `${props.classes.card} ${props.classes.selected}`
             : props.classes.card
         }

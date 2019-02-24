@@ -32,7 +32,7 @@ const People = props => {
   //filters people only with proper companyName
   const peopleToDisplay = props.peopleDatabase.map(
     (singlePerson, mapIndex) =>
-      singlePerson.company == props.companyName && (
+      singlePerson.company === props.companyName && (
         <Person
           key={singlePerson.name + mapIndex}
           id={singlePerson.id}

@@ -35,7 +35,7 @@ const Things = props => {
   //filters things only with proper companyName and filter settings (looking for type in any position of array)
   const thingsToDisplay = props.thingsDatabase.map(
     (singleThing, mapIndex) =>
-      singleThing.company == props.companyName &&
+      singleThing.company === props.companyName &&
       props.thingType.indexOf(singleThing.type) !== -1 && (
         <Thing
           key={singleThing.name + mapIndex}
@@ -75,7 +75,7 @@ const Things = props => {
             <DirectionsCar color="secondary" fontSize="large" />
             <Business color="secondary" fontSize="large" />
             <div className={classes.thingsContainer}>
-              {thingsToDisplay.every(el => el == false) ? (
+              {thingsToDisplay.every(el => el === false) ? (
                 <Typography color="primary" variant="h5" component="h3">
                   Nothing on the list 😕 tweak your filter settings ☑
                 </Typography>

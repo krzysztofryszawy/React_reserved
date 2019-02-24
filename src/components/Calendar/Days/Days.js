@@ -91,7 +91,7 @@ class Days extends Component {
   addingReservation = () => {
     let localSingleDay = this.state.singleDay;
     for (let i = this.state.startHour; i <= this.state.endHour; i++) {
-      if (localSingleDay[i].reserved != true) {
+      if (localSingleDay[i].reserved !== true) {
         localSingleDay[i].reserved = true;
         localSingleDay[i].personId = this.props.currentPersonId;
         localSingleDay[i].personName = this.props.currentPersonName;
@@ -131,7 +131,7 @@ class Days extends Component {
   // handle click and decide what next method should use
   clickHandler = clicked => {
     if (!this.props.currentPersonName) {
-      alert('choose person');
+      alert('Please select Person.');
       return;
     }
     // if is is second click - second point in range
@@ -189,7 +189,7 @@ class Days extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     //managing database when date changed inside component, because there is no props provided
-    prevState.reservationDate != this.state.reservationDate &&
+    prevState.reservationDate !== this.state.reservationDate &&
       this.getReservationsHandler();
   }
 

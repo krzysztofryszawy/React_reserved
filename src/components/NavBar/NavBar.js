@@ -8,9 +8,8 @@ const styles = theme => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.grey[900],
-    zIndex: '99999',
-    position: 'fixed',
-    top: 0,
+    // position: 'fixed',
+    // top: 0,
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'stretch',
@@ -33,10 +32,11 @@ const styles = theme => ({
     textAlign: 'center',
     transition: 'transform .2s ease-out',
     [theme.breakpoints.down(520)]: {
-      padding: '.5rem',
+      padding: '.3rem',
       marginRight: 0,
       marginLeft: '.1rem',
-      fontWeight: 500
+      fontWeight: 500,
+      fontSize: '.9rem'
     }
   },
   activeLink: {
@@ -45,10 +45,11 @@ const styles = theme => ({
     transform: 'translateY(5px)'
   },
   logo: {
-    margin: '.5rem',
-    padding: '.5rem',
-    backgroundColor: theme.palette.grey[800],
-    color: '#202020',
+    // margin: '.2rem',
+    padding: '.2rem',
+    fontSize: '.8rem',
+    backgroundColor: theme.palette.grey[900],
+    color: theme.palette.secondary.dark,
     textAlign: 'center',
     [theme.breakpoints.down(520)]: {
       padding: '.2rem',
@@ -57,6 +58,19 @@ const styles = theme => ({
   },
   disabled: {
     opacity: 0.5
+  },
+  container: {
+    display: 'flex',
+    flexFlow: 'column',
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+    alignItems: 'flex-end',
+    zIndex: '99999'
+  },
+  underNav: {
+    display: 'flex',
+    flexFlow: 'row'
   }
 });
 
@@ -69,7 +83,7 @@ class NavBar extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div className={classes.container}>
         <div className={classes.root}>
           <NavLink
             exact
@@ -81,7 +95,7 @@ class NavBar extends React.Component {
           </NavLink>
           <NavLink
             style={
-              this.props.companyName == 'Select your Company'
+              this.props.companyName === 'Select your Company'
                 ? { display: 'none' }
                 : null
             }
@@ -93,7 +107,7 @@ class NavBar extends React.Component {
           </NavLink>
           <NavLink
             style={
-              this.props.companyName == 'Select your Company'
+              this.props.companyName === 'Select your Company'
                 ? { display: 'none' }
                 : null
             }
@@ -105,7 +119,7 @@ class NavBar extends React.Component {
           </NavLink>
           <NavLink
             style={
-              this.props.companyName == 'Select your Company'
+              this.props.companyName === 'Select your Company'
                 ? { display: 'none' }
                 : null
             }
@@ -122,14 +136,14 @@ class NavBar extends React.Component {
           >
             Help
           </NavLink>
+          <SwitchTheme themechangeHandler={this.props.themechangeHandler} />
+        </div>
+        <div className={classes.underNav}>
           <div className={classes.logo}>
             {this.props.companyName}
-            {this.props.companyName == 'Emerald Forest' && ' 🌳'}
-            {this.props.companyName == 'Aviation' && ' ✈'}
-            {this.props.companyName == 'Greyhound' && ' 🐕'}
-          </div>
-          <div>
-            <SwitchTheme themechangeHandler={this.props.themechangeHandler} />
+            {this.props.companyName === 'Emerald Forest' && ' 🌳'}
+            {this.props.companyName === 'Aviation' && ' ✈'}
+            {this.props.companyName === 'Greyhound' && ' 🐕'}
           </div>
         </div>
       </div>

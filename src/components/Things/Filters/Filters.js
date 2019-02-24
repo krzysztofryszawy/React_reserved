@@ -29,11 +29,11 @@ class Filters extends React.Component {
 
   //initial setState from data provided with Context API (restoring data when component mounted again)
   settingState = () => {
-    this.props.thingType.some(el => el == 'car') == 1 &&
+    this.props.thingType.some(el => el === 'car') === true &&
       this.setState({ car: true });
-    this.props.thingType.some(el => el == 'place') == 1 &&
+    this.props.thingType.some(el => el === 'place') === true &&
       this.setState({ place: true });
-    this.props.thingType.some(el => el == 'equipment') == 1 &&
+    this.props.thingType.some(el => el === 'equipment') === true &&
       this.setState({ equipment: true });
   };
 

@@ -17,6 +17,7 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3,
     borderBottom: `1px solid ${theme.palette.divider}`,
     width: 'auto',
+    overflow: 'hidden',
     [theme.breakpoints.up('md')]: {
       width: '95vw',
       marginLeft: 'auto',
@@ -105,8 +106,8 @@ const Booking = props => {
               variant="h5"
               component="h3"
             >
-              {currentPersonToDisplay.every(el => el == false)
-                ? 'Choose from menu above person and thing to booking'
+              {currentPersonToDisplay.every(el => el === false)
+                ? 'From menu above, choose person and thing'
                 : props.currentPerson +
                   '  is going to book  ' +
                   props.currentThing}
